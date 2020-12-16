@@ -1,16 +1,12 @@
 package com.example.keycloakuserstore.dao;
 
 import com.example.keycloakuserstore.models.User;
-import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.FlushModeType;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 public class UserDAO {
@@ -82,7 +78,7 @@ public class UserDAO {
 
     public User getUserById(String id) {
         logger.info("getUserById(id: " + id + ")");
-        return entityManager.find(User.class, UUID.fromString(id));
+        return entityManager.find(User.class, id);
     }
 
     public User createUser(User user) {
@@ -112,7 +108,7 @@ public class UserDAO {
         return userEntity;
     }
 
-    public int size() {
-        return entityManager.createNamedQuery("getUserCount", Integer.class).getSingleResult();
+    public Long size() {
+        return entityManager.createNamedQuery("getUserCount", Long.class).getSingleResult();
     }
 }

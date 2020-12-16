@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class UserRepresentation extends AbstractUserAdapterFederatedStorage {
     private User userEntity;
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 
     public UserRepresentation(KeycloakSession session,
                               RealmModel realm,
@@ -40,13 +40,18 @@ public class UserRepresentation extends AbstractUserAdapterFederatedStorage {
 
     @Override
     public void setEmail(String email) {
-        userEntity.setEmail(email);
+//        userEntity.set(email);
         userEntity = userDAO.updateUser(userEntity);
     }
 
     @Override
     public String getEmail() {
         return userEntity.getEmail();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return userEntity.isEnabled();
     }
 
     @Override
@@ -105,6 +110,16 @@ public class UserRepresentation extends AbstractUserAdapterFederatedStorage {
         } else {
             return super.getAttribute(name);
         }
+    }
+
+    @Override
+    public String getFirstName() {
+        return userEntity.getFirstName();
+    }
+
+    @Override
+    public String getLastName() {
+        return userEntity.getLastName();
     }
 
     @Override

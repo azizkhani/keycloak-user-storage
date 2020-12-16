@@ -46,6 +46,7 @@ public class DemoUserStorageProviderFactory implements UserStorageProviderFactor
     public static final String DB_USERNAME_KEY = "db:username";
     public static final String DB_PASSWORD_KEY = "db:password";
     public static final String DB_PORT_KEY = "db:port";
+    public static final String HASHING_VERIFY_API_URL = "hash:url";
 
     static {
         configMetadata = ProviderConfigurationBuilder.create()
@@ -89,7 +90,13 @@ public class DemoUserStorageProviderFactory implements UserStorageProviderFactor
                 .property().name(DB_PORT_KEY)
                 .type(ProviderConfigProperty.STRING_TYPE)
                 .label("Database Port")
-                .defaultValue("3306")
+                .defaultValue("5432")
+                .add()
+                // DB Port
+                .property().name(HASHING_VERIFY_API_URL)
+                .type(ProviderConfigProperty.STRING_TYPE)
+                .label("Api url for hashing")
+                .defaultValue("http://127.0.0.1:5000")
                 .add()
                 .build();
     }
@@ -255,6 +262,6 @@ public class DemoUserStorageProviderFactory implements UserStorageProviderFactor
 
     @Override
     public String getId() {
-        return "demo-mysql-user-provider";
+        return "azizkhani-user-provider";
     }
 }

@@ -19,11 +19,13 @@ repositories {
 }
 
 dependencies {
-	implementation('org.keycloak:keycloak-core:8.0.1')
-	implementation('org.keycloak:keycloak-server-spi:8.0.1')
+	implementation('org.keycloak:keycloak-core:11.0.3')
+	implementation('org.keycloak:keycloak-server-spi:11.0.3')
 	implementation('org.keycloak:keycloak-services:8.0.1')
+	bundleLib group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.0'
 	bundleLib group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 	bundleLib group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+//	bundleLib group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
 	bundleLib group: 'org.slf4j', name: 'slf4j-log4j12', version: '2.0.0-alpha1'
 	bundleLib group: 'org.slf4j', name: 'slf4j-jdk14', version: '2.0.0-alpha1'
 	implementation('org.projectlombok:lombok:1.18.10')
